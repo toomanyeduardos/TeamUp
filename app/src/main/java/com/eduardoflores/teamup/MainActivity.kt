@@ -9,14 +9,16 @@ import android.support.v7.widget.RecyclerView
 import android.view.Menu
 import android.view.MenuItem
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.database.FirebaseDatabase
 import kotlinx.android.synthetic.main.activity_main.*
 
 /**
  * Firebase project:
  * https://console.firebase.google.com/project/teamup-eb947/overview
  *
- * Learning resources:
+ * Github repo:
+ * https://github.com/toomanyeduardos/TeamUp
+ *
+ * Learning resources (for RecyclerView, because I can never remember them):
  * https://www.raywenderlich.com/126528/android-recyclerview-tutorial
  * ended on Taking A Spacewalk: Adding Scrolling support
  */

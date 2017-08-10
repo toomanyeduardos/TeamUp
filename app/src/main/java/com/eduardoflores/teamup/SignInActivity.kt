@@ -2,9 +2,8 @@ package com.eduardoflores.teamup
 
 import android.app.Activity
 import android.content.Intent
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
+import android.support.v7.app.AppCompatActivity
 import android.widget.Toast
 import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.AuthResult
@@ -19,6 +18,8 @@ class SignInActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.sign_in_activity)
+
+        title = getString(R.string.sign_in_activity_actionbar_title)
 
         button_sign_in.setOnClickListener{signIn()}
         button_sign_up.setOnClickListener{signUp()}
