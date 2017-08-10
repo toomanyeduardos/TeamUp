@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "513903140134",
+    "firebase_url": "https://teamup-eb947.firebaseio.com",
+    "project_id": "teamup-eb947",
+    "storage_bucket": "teamup-eb947.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:513903140134:android:36a9721a7419c2ac",
+        "android_client_info": {
+          "package_name": "com.eduardoflores.teamup"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "513903140134-k8s5nb6gpfrrhing8r1qsugigu280mgk.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.eduardoflores.teamup",
+            "certificate_hash": "1fa5a19e887ffd9735cefad9f3f49cc1b8e3e2e9"
+          }
+        },
+        {
+          "client_id": "513903140134-rl7vti6i85vuv4t8qs4rb5krftgjr71v.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCdWUNFtngGjIdx4XFop33DTAbzsEw7o7E"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "513903140134-rl7vti6i85vuv4t8qs4rb5krftgjr71v.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?><!DOCTYPE resources [<!ENTITY appname "TeamUp!"><!ENTITY author "Eduardo Flores">]>
+
+<resources>
+    <string name="app_name">&appname;</string>
+
+    <string name="menu_sign_in">Sign In</string>
+    <string name="menu_sign_out">Sign Out</string>
+    <string name="menu_about">About…</string>
+    <string name="menu_start_new_post">New Post</string>
+
+    <string name="about_title">About &appname;</string>
+    <string name="about_message">&appname; is currently developed by &author; as a side project.\n\n\nI hope you enjoy it!</string>
+
+    <string name="sign_in_activity_sign_in_title">If you already have an account, please sign in. If not, enter your credentials, and push Sign up!</string>
+    <string name="sign_in_activity_username_hint">Email or username</string>
+    <string name="sign_in_activity_password_hint">Password</string>
+    <string name="sign_in_activity_sign_in_button">Sign In!</string>
+    <string name="sign_in_activity_sign_up_button">Sign Up!</string>
+
+</resources>
