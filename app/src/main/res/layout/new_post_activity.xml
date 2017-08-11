@@ -12,7 +12,7 @@
         tools:context="com.eduardoflores.teamup.NewPost">
 
         <TextView
-            android:id="@+id/textView"
+            android:id="@+id/post_title_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
@@ -22,7 +22,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <EditText
-            android:id="@+id/editText"
+            android:id="@+id/post_title_et"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginEnd="8dp"
@@ -34,20 +34,20 @@
             android:inputType="textPersonName"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView" />
+            app:layout_constraintTop_toBottomOf="@+id/post_title_tv" />
 
         <TextView
-            android:id="@+id/textView2"
+            android:id="@+id/post_body_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginTop="24dp"
             android:text="@string/new_post_body"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/editText" />
+            app:layout_constraintTop_toBottomOf="@+id/post_title_et" />
 
         <EditText
-            android:id="@+id/editText2"
+            android:id="@+id/post_body_et"
             android:layout_width="0dp"
             android:layout_height="200dp"
             android:layout_marginEnd="8dp"
@@ -59,20 +59,20 @@
             android:singleLine="false"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView2" />
+            app:layout_constraintTop_toBottomOf="@+id/post_body_tv" />
 
         <TextView
-            android:id="@+id/textView3"
+            android:id="@+id/compensation_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginTop="24dp"
             android:text="@string/new_post_compensation"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/editText2" />
+            app:layout_constraintTop_toBottomOf="@+id/post_body_et" />
 
         <EditText
-            android:id="@+id/editText3"
+            android:id="@+id/post_compensation_et"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginEnd="8dp"
@@ -82,7 +82,7 @@
             android:inputType="text"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView3" />
+            app:layout_constraintTop_toBottomOf="@+id/compensation_tv" />
     </android.support.constraint.ConstraintLayout>
 
 </ScrollView>

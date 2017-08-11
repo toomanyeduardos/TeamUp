@@ -95,9 +95,6 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun newPost(): Boolean {
-//        val database = FirebaseDatabase.getInstance()
-//        val myRef = database.getReference("POSTS")
-//        myRef.setValue("Hello World!")
         val intent = Intent(this, NewPost::class.java)
         startActivity(intent)
 
