@@ -49,14 +49,16 @@
         <EditText
             android:id="@+id/post_body_et"
             android:layout_width="0dp"
-            android:layout_height="200dp"
+            android:layout_height="wrap_content"
             android:layout_marginEnd="8dp"
             android:layout_marginStart="8dp"
             android:ellipsize="end"
             android:ems="10"
             android:hint="@string/new_post_body_hint"
-            android:inputType="textPersonName"
+            android:inputType="textPersonName|textMultiLine"
             android:singleLine="false"
+            android:maxLength="2000"
+            android:maxLines="4"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/post_body_tv" />
