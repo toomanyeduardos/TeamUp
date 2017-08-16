@@ -18,7 +18,7 @@ class PostViewAdapter(modelClass: Class<Post>,
         databaseReference) {
 
     override fun populateViewHolder(viewHolder: PostHolder, model: Post, position: Int) {
-        viewHolder.postTitle.setText(model.title)
+        viewHolder.postTitle.text = model.title
     }
 
 }
