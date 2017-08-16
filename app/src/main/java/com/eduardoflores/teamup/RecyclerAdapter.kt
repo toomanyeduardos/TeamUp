@@ -31,8 +31,6 @@ class RecyclerAdapter (val photos : List<Photo>) : RecyclerView.Adapter<Recycler
 
     inner class PhotoHolder(view : View) : RecyclerView.ViewHolder(view), View.OnClickListener {
         val TAG = PhotoHolder::class.java.simpleName
-        val PHOTO_KEY = "PHOTO"
-        var mItemImage : ImageView = view.item_image
         var mItemDate : TextView = view.item_date
         var mItemDescription : TextView = view.item_description
         lateinit var mPhoto : Photo

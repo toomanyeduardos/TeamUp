@@ -10,11 +10,10 @@ import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import com.eduardoflores.teamup.model.Post
+import com.firebase.ui.database.FirebaseRecyclerAdapter
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.database.DataSnapshot
-import com.google.firebase.database.DatabaseError
-import com.google.firebase.database.FirebaseDatabase
-import com.google.firebase.database.ValueEventListener
+import com.google.firebase.auth.FirebaseUser
+import com.google.firebase.database.*
 import kotlinx.android.synthetic.main.activity_main.*
 
 /**
@@ -38,6 +37,7 @@ class MainActivity : AppCompatActivity() {
     lateinit var mLinearLayoutManager : LinearLayoutManager
     lateinit var mAdapter : RecyclerAdapter
     val REQUEST_CODE_SIGN_IN = 99
+    var mFirebaseUser : FirebaseUser? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -52,26 +52,30 @@ class MainActivity : AppCompatActivity() {
         mLinearLayoutManager = LinearLayoutManager(this)
         mRecyclerView.layoutManager = mLinearLayoutManager
 
-        // setup recycler adapter
-        mAdapter = RecyclerAdapter(mPhotosList)
-        mRecyclerView.adapter = mAdapter
+        mFirebaseUser = FirebaseAuth.getInstance().currentUser
+        if (mFirebaseUser != null) {
+            fetchPostsFromFirebase().addValueEventListener(object : ValueEventListener{
+                override fun onDataChange(dataSnapshot: DataSnapshot) {
+                    Log.d(TAG, "fetchPostsFromFirebase. Data: " + dataSnapshot)
 
-        // read firebase data
-        val database = FirebaseDatabase.getInstance()
-        val databaseReference = database.reference
-        databaseReference.addValueEventListener(object : ValueEventListener {
-            override fun onDataChange(dataSnapshot: DataSnapshot) {
-                dataSnapshot.children
-                        .flatMap { it.children }
-                        .flatMap { it.children }
-                        .map { it.getValue(Post::class.java) }
-                        .forEach { Log.d(TAG, "onDataChange. post.title: " + it?.title) }
-            }
 
-            override fun onCancelled(error: DatabaseError?) {
-                Log.d(TAG, "onCancelled. error: " + error.toString())
-            }
-        })
+                    // setup recycler adapter
+                    mAdapter = RecyclerAdapter(mPhotosList)
+                    mRecyclerView.adapter = mAdapter
+                }
+
+                override fun onCancelled(error: DatabaseError) {
+                    Log.d(TAG, "fetchPostsFromFirebase error! Error: " + error)
+                }
+            })
+
+        }
+    }
+
+    private fun fetchPostsFromFirebase(): Query {
+        val database = FirebaseDatabase.getInstance().reference
+        return database.child("user-posts")
+                .child(mFirebaseUser?.uid)
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -126,4 +130,6 @@ class MainActivity : AppCompatActivity() {
 
         return true
     }
+
+
 }
