@@ -35,7 +35,7 @@ class MainActivity : AppCompatActivity() {
     val TAG = MainActivity::class.java.simpleName
     lateinit var mRecyclerView : RecyclerView
     lateinit var mLinearLayoutManager : LinearLayoutManager
-    lateinit var mAdapter : RecyclerAdapter
+    lateinit var mAdapter : PostViewAdapter
     val REQUEST_CODE_SIGN_IN = 99
     var mFirebaseUser : FirebaseUser? = null
 
@@ -54,21 +54,25 @@ class MainActivity : AppCompatActivity() {
 
         mFirebaseUser = FirebaseAuth.getInstance().currentUser
         if (mFirebaseUser != null) {
-            fetchPostsFromFirebase().addValueEventListener(object : ValueEventListener{
-                override fun onDataChange(dataSnapshot: DataSnapshot) {
-                    Log.d(TAG, "fetchPostsFromFirebase. Data: " + dataSnapshot)
-
-
-                    // setup recycler adapter
-                    mAdapter = RecyclerAdapter(mPhotosList)
-                    mRecyclerView.adapter = mAdapter
-                }
-
-                override fun onCancelled(error: DatabaseError) {
-                    Log.d(TAG, "fetchPostsFromFirebase error! Error: " + error)
-                }
-            })
-
+//            fetchPostsFromFirebase().addValueEventListener(object : ValueEventListener{
+//                override fun onDataChange(dataSnapshot: DataSnapshot) {
+//                    Log.d(TAG, "fetchPostsFromFirebase. Data: " + dataSnapshot)
+//
+//
+//                    // setup recycler adapter
+//                    mAdapter = RecyclerAdapter(mPhotosList)
+//                    mRecyclerView.adapter = mAdapter
+//                }
+//
+//                override fun onCancelled(error: DatabaseError) {
+//                    Log.d(TAG, "fetchPostsFromFirebase error! Error: " + error)
+//                }
+//            })
+            mAdapter = PostViewAdapter(Post::class.java,
+                    R.layout.activity_main,
+                    PostHolder::class.java,
+                    FirebaseDatabase.getInstance().reference,
+                    this)
         }
     }
 
