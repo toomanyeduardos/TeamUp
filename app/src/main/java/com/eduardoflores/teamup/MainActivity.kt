@@ -27,6 +27,9 @@ import kotlinx.android.synthetic.main.activity_main.*
  * Learning resources (for RecyclerView, because I can never remember them):
  * https://www.raywenderlich.com/126528/android-recyclerview-tutorial
  * ended on Taking A Spacewalk: Adding Scrolling support
+ *
+ * DB setup from:
+ * https://github.com/firebase/quickstart-android/tree/master/database
  */
 
 class MainActivity : AppCompatActivity() {
