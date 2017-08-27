@@ -10,7 +10,6 @@ import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import com.eduardoflores.teamup.model.Post
-import com.firebase.ui.database.FirebaseRecyclerAdapter
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.database.*
@@ -35,7 +34,7 @@ class MainActivity : AppCompatActivity() {
     val TAG = MainActivity::class.java.simpleName
     lateinit var mRecyclerView : RecyclerView
     lateinit var mLinearLayoutManager : LinearLayoutManager
-    lateinit var mAdapter : PostViewAdapter
+    lateinit var mAdapter : RecyclerAdapter
     val REQUEST_CODE_SIGN_IN = 99
     var mFirebaseUser : FirebaseUser? = null
 
@@ -54,25 +53,30 @@ class MainActivity : AppCompatActivity() {
 
         mFirebaseUser = FirebaseAuth.getInstance().currentUser
         if (mFirebaseUser != null) {
-//            fetchPostsFromFirebase().addValueEventListener(object : ValueEventListener{
-//                override fun onDataChange(dataSnapshot: DataSnapshot) {
-//                    Log.d(TAG, "fetchPostsFromFirebase. Data: " + dataSnapshot)
-//
-//
-//                    // setup recycler adapter
-//                    mAdapter = RecyclerAdapter(mPhotosList)
-//                    mRecyclerView.adapter = mAdapter
-//                }
-//
-//                override fun onCancelled(error: DatabaseError) {
-//                    Log.d(TAG, "fetchPostsFromFirebase error! Error: " + error)
-//                }
-//            })
-            mAdapter = PostViewAdapter(Post::class.java,
-                    R.layout.activity_main,
-                    PostHolder::class.java,
-                    FirebaseDatabase.getInstance().reference,
-                    this)
+            fetchPostsFromFirebase().addValueEventListener(object : ValueEventListener {
+                override fun onDataChange(dataSnapshot: DataSnapshot) {
+                    Log.d(TAG, "fetchPostsFromFirebase. dataSnapshot: " + dataSnapshot)
+                    val allPosts = ArrayList<Post>()
+                    dataSnapshot.children
+                            .map { it.getValue(Post::class.java) }
+                            .forEach {
+                                allPosts.add(it as Post)
+                            }
+
+                    // setup recycler adapter
+                    mAdapter = RecyclerAdapter(allPosts)
+                    mRecyclerView.adapter = mAdapter
+                }
+
+                override fun onCancelled(error: DatabaseError) {
+                    Log.d(TAG, "fetchPostsFromFirebase error! Error: " + error)
+                }
+            })
+//            mAdapter = PostViewAdapter(Post::class.java,
+//                    R.layout.activity_main,
+//                    PostHolder::class.java,
+//                    FirebaseDatabase.getInstance().reference,
+//                    this)
         }
     }
 

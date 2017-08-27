@@ -1,39 +1,37 @@
 package com.eduardoflores.teamup
 
-import android.content.Intent
 import android.support.v7.widget.RecyclerView
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
 import android.widget.TextView
+import com.eduardoflores.teamup.model.Post
 import kotlinx.android.synthetic.main.recyclerview_item_row.view.*
 
 /**
  * Created by eduardo on 8/7/17.
  */
-class RecyclerAdapter (val photos : List<Photo>) : RecyclerView.Adapter<RecyclerAdapter.PhotoHolder>() {
+class RecyclerAdapter (val posts : List<Post>) : RecyclerView.Adapter<RecyclerAdapter.PostHolder>() {
 
-    override fun onBindViewHolder(holder: PhotoHolder, position: Int) {
-        val itemPhoto = photos.get(position)
-        holder.bindPhoto(itemPhoto)
+    override fun onBindViewHolder(holder: PostHolder, position: Int) {
+        val post = posts.get(position)
+        holder.bindPost(post)
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): PhotoHolder {
+    override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): PostHolder {
         val inflatedView = LayoutInflater.from(parent?.context).inflate(R.layout.recyclerview_item_row, parent, false)
-        return PhotoHolder(inflatedView)
+        return PostHolder(inflatedView)
     }
 
     override fun getItemCount(): Int {
-        return photos.size
+        return posts.size
     }
 
-    inner class PhotoHolder(view : View) : RecyclerView.ViewHolder(view), View.OnClickListener {
-        val TAG = PhotoHolder::class.java.simpleName
+    inner class PostHolder(view : View) : RecyclerView.ViewHolder(view), View.OnClickListener {
+        val TAG = PostHolder::class.java.simpleName
         var mItemDate : TextView = view.item_date
         var mItemDescription : TextView = view.item_description
-        lateinit var mPhoto : Photo
 
         init {
             view.setOnClickListener(this)
@@ -47,10 +45,9 @@ class RecyclerAdapter (val photos : List<Photo>) : RecyclerView.Adapter<Recycler
 //            context.startActivity(showPhotoIntent)
         }
 
-        fun bindPhoto(photo: Photo) {
-            mPhoto = photo
-            mItemDate.text = mPhoto.id
-            mItemDescription.text = "Some description"
+        fun bindPost(post: Post) {
+            mItemDate.text = post.author
+            mItemDescription.text = post.body
         }
     }
 }
