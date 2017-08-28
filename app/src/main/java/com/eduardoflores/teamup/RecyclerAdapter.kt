@@ -5,6 +5,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import com.eduardoflores.teamup.model.Post
 import kotlinx.android.synthetic.main.recyclerview_item_row.view.*
@@ -30,8 +31,9 @@ class RecyclerAdapter (val posts : List<Post>) : RecyclerView.Adapter<RecyclerAd
 
     inner class PostHolder(view : View) : RecyclerView.ViewHolder(view), View.OnClickListener {
         val TAG = PostHolder::class.java.simpleName
-        var mItemDate : TextView = view.item_date
-        var mItemDescription : TextView = view.item_description
+        private var mItemThumbnail : ImageView = view.item_image
+        private var mItemDate : TextView = view.item_date
+        private var mItemDescription : TextView = view.item_description
 
         init {
             view.setOnClickListener(this)
@@ -46,6 +48,7 @@ class RecyclerAdapter (val posts : List<Post>) : RecyclerView.Adapter<RecyclerAd
         }
 
         fun bindPost(post: Post) {
+            mItemThumbnail.setImageResource(R.mipmap.ic_launcher)
             mItemDate.text = post.author
             mItemDescription.text = post.body
         }

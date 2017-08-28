@@ -42,10 +42,6 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val mPhotosList = listOf(Photo("123"),
-                Photo("222"),
-                Photo("111"))
-
         // setup recyclerview
         mRecyclerView = recyclerView
         mLinearLayoutManager = LinearLayoutManager(this)
