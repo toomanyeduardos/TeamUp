@@ -68,11 +68,6 @@ class MainActivity : AppCompatActivity() {
                     Log.d(TAG, "fetchPostsFromFirebase error! Error: " + error)
                 }
             })
-//            mAdapter = PostViewAdapter(Post::class.java,
-//                    R.layout.activity_main,
-//                    PostHolder::class.java,
-//                    FirebaseDatabase.getInstance().reference,
-//                    this)
         }
     }
 

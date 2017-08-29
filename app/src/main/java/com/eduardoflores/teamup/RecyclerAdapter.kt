@@ -41,10 +41,6 @@ class RecyclerAdapter (val posts : List<Post>) : RecyclerView.Adapter<RecyclerAd
 
         override fun onClick(p0: View?) {
             Log.d(TAG, "on Click!")
-//            val context = itemView.context
-//            val showPhotoIntent = Intent(context, PhotoActivity::class.java)
-//            showPhotoIntent.putExtra(PHOTO_KEY, mPhoto)
-//            context.startActivity(showPhotoIntent)
         }
 
         fun bindPost(post: Post) {

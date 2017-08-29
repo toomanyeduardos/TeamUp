@@ -37,9 +37,6 @@ class NewPost : AppCompatActivity() {
         val postCompensation = post_compensation_et.text.toString()
 
         val currentUserId = FirebaseAuth.getInstance().currentUser?.uid as String
-//        val threadId = "$currentUserId$postTitle"
-//        val post = Post(postTitle, postBody, postCompensation, threadId)
-
         val database = FirebaseDatabase.getInstance().reference
 
         database
@@ -66,20 +63,6 @@ class NewPost : AppCompatActivity() {
                         Toast.makeText(this@NewPost, "Error: user canceled new post", Toast.LENGTH_LONG).show()
                     }
                 })
-//        database
-//                .push()
-//                .child("thread")
-////                .child(threadId)
-//                .child(currentUserId)
-//                .setValue(post)
-//                .addOnCompleteListener { task: Task<Void> ->
-//                    if (task.isSuccessful) {
-//                        Toast.makeText(this, "Post creation succeeded!!", Toast.LENGTH_SHORT).show()
-//                        finish()
-//                    } else {
-//                        Toast.makeText(this, "Account creation failed! " + task.exception?.message, Toast.LENGTH_LONG).show()
-//                    }
-//                }
         return true
     }
 
